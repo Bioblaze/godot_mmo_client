@@ -70,9 +70,9 @@ __meta__ = {
 }
 
 [node name="UsernameTitle" type="Label" parent="ColorRect/Login"]
-margin_top = 24.0
+margin_top = 58.0
 margin_right = 312.0
-margin_bottom = 55.0
+margin_bottom = 89.0
 custom_fonts/font = ExtResource( 1 )
 text = "Username"
 __meta__ = {
@@ -80,19 +80,20 @@ __meta__ = {
 }
 
 [node name="Username" type="LineEdit" parent="ColorRect/Login"]
-margin_top = 59.0
+margin_top = 93.0
 margin_right = 312.0
-margin_bottom = 89.0
+margin_bottom = 123.0
 custom_fonts/font = ExtResource( 3 )
 placeholder_text = "Username goes here"
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/Login"]
-margin_top = 93.0
+margin_top = 127.0
 margin_right = 312.0
-margin_bottom = 98.0
+margin_bottom = 132.0
 rect_min_size = Vector2( 0, 5 )
 
 [node name="Password Title" type="Label" parent="ColorRect/Login"]
+visible = false
 margin_top = 102.0
 margin_right = 312.0
 margin_bottom = 133.0
@@ -100,22 +101,23 @@ custom_fonts/font = ExtResource( 1 )
 text = "Password"
 
 [node name="Password" type="LineEdit" parent="ColorRect/Login"]
-margin_top = 137.0
+visible = false
+margin_top = 119.0
 margin_right = 312.0
-margin_bottom = 167.0
+margin_bottom = 149.0
 custom_fonts/font = ExtResource( 3 )
 placeholder_text = "Password goes here"
 
 [node name="MarginContainer2" type="MarginContainer" parent="ColorRect/Login"]
-margin_top = 171.0
+margin_top = 136.0
 margin_right = 312.0
-margin_bottom = 211.0
+margin_bottom = 176.0
 rect_min_size = Vector2( 0, 40 )
 
 [node name="LoginButton" type="Button" parent="ColorRect/Login"]
-margin_top = 215.0
+margin_top = 180.0
 margin_right = 312.0
-margin_bottom = 235.0
+margin_bottom = 200.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="ColorRect/Login/LoginButton"]
@@ -144,6 +146,7 @@ __meta__ = {
 }
 
 [node name="RegisterButton" type="Button" parent="ColorRect/AdditionalButtons"]
+visible = false
 margin_right = 149.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
@@ -160,17 +163,16 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/AdditionalButtons"]
-margin_top = 24.0
 margin_right = 149.0
-margin_bottom = 24.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VerifyRegisterAccountButton" type="Button" parent="ColorRect/AdditionalButtons"]
-margin_top = 28.0
+visible = false
+margin_top = 4.0
 margin_right = 149.0
-margin_bottom = 48.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="ColorRect/AdditionalButtons/VerifyRegisterAccountButton"]
@@ -185,17 +187,17 @@ __meta__ = {
 }
 
 [node name="MarginContainer2" type="MarginContainer" parent="ColorRect/AdditionalButtons"]
-margin_top = 52.0
+margin_top = 4.0
 margin_right = 149.0
-margin_bottom = 52.0
+margin_bottom = 4.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DiscordButton" type="Button" parent="ColorRect/AdditionalButtons"]
-margin_top = 56.0
+margin_top = 8.0
 margin_right = 149.0
-margin_bottom = 76.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="ColorRect/AdditionalButtons/DiscordButton"]
@@ -210,15 +212,15 @@ __meta__ = {
 }
 
 [node name="MarginContainer3" type="MarginContainer" parent="ColorRect/AdditionalButtons"]
-margin_top = 80.0
+margin_top = 32.0
 margin_right = 149.0
-margin_bottom = 120.0
+margin_bottom = 72.0
 rect_min_size = Vector2( 0, 40 )
 
 [node name="ExitButton" type="Button" parent="ColorRect/AdditionalButtons"]
-margin_top = 124.0
+margin_top = 76.0
 margin_right = 149.0
-margin_bottom = 144.0
+margin_bottom = 96.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="ColorRect/AdditionalButtons/ExitButton"]
