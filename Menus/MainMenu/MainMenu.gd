@@ -36,4 +36,5 @@ func _on_ExitButton_pressed():
 
 
 func _on_LoginButton_pressed():
-	pass # Replace with function body.
+	$ColorRect/Login/LoginButton.disabled = true
+	Global.connect_and_send_username("%s\n" % [$ColorRect/Login/Username.text])

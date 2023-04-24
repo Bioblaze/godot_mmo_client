@@ -6,11 +6,11 @@ extends Node
 # var b = "text"
 # Set the IP address and port for the connection
 var ip_address: String = "127.0.0.1"
-var port: int = 3000
+var port: int = 6000
 var discord_url = "https://discord.gg/pTGZuaf"
 
 # Create a StreamPeerTCP instance to manage the TCP connection
-var tcp_connection: StreamPeerTCP = StreamPeerTCP.new
+var tcp_connection: StreamPeerTCP = StreamPeerTCP.new()
 
 # Define the terrain scene or resource that you want to instantiate
 var terrain_scene = preload("res://Assets/terrain.tscn")
@@ -36,9 +36,14 @@ func _process(delta):
 		# Read the data from the socket
 		var data = tcp_connection.get_data(tcp_connection.get_available_bytes())
 		if data.size() > 0:
+			var dstr = data[1].get_string_from_utf8()
+			print(dstr.substr(0, 50))
+			if (dstr.length() <= 0):
+				return
+				
 			# Parse the JSON payload
-			var payload = JSON.parse(data.get_string_from_utf8())
-
+			var payload = JSON.parse(dstr)
+			print(payload.result["map"])
 			if payload.error == OK:
 				# Use a match statement to check against the "action" variable
 				match payload.result["action"]:
@@ -62,14 +67,18 @@ func _process(delta):
 
 func process_map_event(map_data):
 	for map_object in map_data:
-		var x = map_object["x"]
-		var y = map_object["y"]
+		for map_cell in map_object:
+			print(map_object)
+			var x = map_cell["x"]
+			var y = map_cell["y"]
 
-		# Instantiate a square and add it to the scene at the specified position
-		var terrain = terrain_scene.instance()
-		terrain.set("TYPE", map_object["type"]) # Set the TYPE property of the square scene
-		terrain.position = Vector2(x, y)
-		map_scene.add_child(terrain)
+			# Instantiate a square and add it to the scene at the specified position
+			var terrain = terrain_scene.instance()
+			terrain.set("TYPE", map_cell["type"]) # Set the TYPE property of the square scene
+			terrain.position = Vector2(x, y)
+			map_scene.add_child(terrain)
+	if get_tree().change_scene(map_scene) != OK:
+		print("Failed to Load Map.")
 
 
 func _exit_tree():
@@ -77,7 +86,7 @@ func _exit_tree():
 	tcp_connection.disconnect_from_host()
 
 # Add this new function after the _ready function
-func connect_and_send_username(ip_address: String, port: int, username: String):
+func connect_and_send_username(username: String):
 	# Attempt to connect to the IP address and port
 	var error = tcp_connection.connect_to_host(ip_address, port)
 
@@ -92,6 +101,7 @@ func connect_and_send_username(ip_address: String, port: int, username: String):
 
 # Update the send_username function to remove the username argument
 func send_username(username: String):
+	print("Sending Username: %s" % [username])
 	var data = username.to_utf8()
 	var error = tcp_connection.put_data(data)
 	if error != OK:
