@@ -24,6 +24,7 @@ config/version="0.0.1"
 
 [autoload]
 
+TcpClient="*res://Scripts/tcp_client.gd"
 Global="*res://Scripts/global.gd"
 
 [rendering]

@@ -45,11 +45,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -283.059
-margin_top = -171.111
+margin_top = -172.233
 margin_right = 280.941
-margin_bottom = -100.111
+margin_bottom = -19.2335
 custom_fonts/font = SubResource( 1 )
-text = "A story being told.."
+text = "Presents
+The Dwarven Expedition
+Recovering the Lost Realm
+"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
